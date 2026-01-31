@@ -16,7 +16,7 @@ sidebar_position: 1
 
 **MQTT Transmission**: An MQTT Client that implements the Sparkplug specification to bridge local Ignition tags (OPC-UA and Memory tags) and publish the resulting structure to an MQTT infrastructure.
 
-[photo of architecture is here] 
+![Architecture](../../static/img/two-ignition-architecture.png)
 
 ## Prerequisites
 - Two machines to run the two instances of **Ignition**, or **Ignition + Ignition Edge**
@@ -26,13 +26,15 @@ sidebar_position: 1
 ## Check Compatibility
 Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Version **8.1.xx**, as this may not correspond to the most recent version of Ignition. To do this, go to the Strategic Partner Modules tab on the [Ignition Downloads page](https://inductiveautomation.com/downloads/third-party-modules/8.3.3). Use the drop-down menu to find the stable **8.1.xx** version.
 
-[photo of Ignition Strategic Partner Modules tab here]
+![Ignition Strategic Partner Modules tab](../../static/img/strategicpartnerstab.png)
 
 * This is the version you will use to download Ignition *and* Cirrus Link MQTT Modules (pictured below the drop-down menu).
 
 ## Configure the Primary Machine
 1. From the [Ignition Version Archive](https://inductiveautomation.com/downloads/archive), select and download the appropriate Ignition Installer version for either Windows, Linux or MacOS.
-[photo of Ignition downloads tab here]
+
+![Ignition Version Archive tab](../../static/img/versionarchive-check.png)
+
 2. Follow Inductive Automation’s guide to [install and start Ignition](https://www.docs.inductiveautomation.com/docs/8.1/getting-started/installing-and-upgrading).
 > *Note: You will use the username & password credentials again in the next steps, so keep them readily available.*
 3. Once Ignition is successfully downloaded and started, go to the Strategic Partner Modules tab on the [Ignition Downloads page](https://inductiveautomation.com/downloads/third-party-modules/8.3.3). Again, use the drop-down menu to find the appropriate **8.1.xx** version(s).
@@ -49,27 +51,32 @@ Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Versi
 
 1. In the Ignition left hand side bar, navigate to **Config** → **SYSTEM** → **Modules**. Scroll to the bottom of the page and click on the link **Install or Upgrade a Module…**
 
-[photo]
+![Install modules](../../static/img/install-ignition-link.png)
 
 2. When prompted, select the MQTT Distributor module from the file browser and select Install. Accept the license agreement and certification and install the module. Repeat for the MQTT Engine module.
-3. When complete, the Ignition Gateway will show the current state of the installed modules (pictured above).
+
+![Certificate](../../static/img/step4a.png)
+
+3. When complete, the Ignition Gateway will show the current state of the installed modules (pictured above under the column 'Running').
 
 - By default, MQTT Engine is already configured to point to an MQTT Server at tcp://localhost:1883, which means it will automatically connect to the MQTT Distributor installed with it. No additional configuration is required.
 
 4. To verify the connection status, navigate to the **Config** tab → **MQTT ENGINE** → **Settings** → **Servers** tab. Confirm that the Chariot SCADA Status shows ‘Connected’.
+
+![Connected Engine Status](../../static/img/connected-status.png)
 
 ### Secondary Machine
 1. In the Ignition left hand side bar, navigate to **Config** → **SYSTEM** → **Modules**. Scroll to the bottom of the page and click on the link **Install or Upgrade a Module…**
 
 2. When prompted, select the **MQTT Transmission** module from the file browser and select Install. Accept the license agreement and certification and install the module.
 
-3. When complete, the Ignition Gateway will show the current state of the installed module:
+When complete, the Ignition Gateway will show the current state of the installed module:
 
-[photo]
+![Install transmission module](../../static/img/install-link-transmission.png)
 
-4. MQTT Transmission needs to be configured to point to the MQTT Distribution server in order to publish data into the MQTT Engine. To do this, navigate to: **Config** → **MQTT TRANSMISSION** → **Settings** → **Servers** tab. 
+3. MQTT Transmission needs to be configured to point to the MQTT Distribution server in order to publish data into the MQTT Engine. To do this, navigate to: **Config** → **MQTT TRANSMISSION** → **Settings** → **Servers** tab. 
 
-5. Edit the MQTT Server named Chariot SCADA to modify the URL to point to the Primary machine’s Ignition Gateway IP Address.
+4. Edit the MQTT Server named Chariot SCADA to modify the URL to point to the Primary machine’s Ignition Gateway IP Address.
 
 > *[(?) How can I find the IP Address on my machine?](www.google.com)*
 
@@ -77,26 +84,28 @@ Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Versi
 
 - Once configured, MQTT Transmission will automatically connect, and you can confirm by checking that the ‘Connected’ status on the Servers tab shows ‘1 of 1’.
 
+![Connected Status](../../static/img/1of1connected.png)
+
 > Validation check: ie. how is the user doing at this point? How can we provide answers for pain points in advance?
 
-## Launch Designer on both Machines
+## Launch Designer on Both Machines
 #### At this point, you are ready to edit the default tag created during the MQTT Transmission installation so that data can be published and observed. 
 
 1. From the Ignition Gateway web interface, select **Get Designer** and follow the instructions to download, install, and launch **Designer Launcher.**
-
-[photo]
 
 2. Once Ignition Designer Launcher has launched, navigate to **Settings** in the top right hand corner. 
 3. Select **Add Designer**.
 4. Once a Designer is added (example pictured below: **Ignition-itsgivinggreen** is the Designer), log in using the username and password previously created in Ignition.
 
-[photo]
+![Designer Launcher](../../static/img/designerlaucher.png)
 
 > Note: if you enabled the Quick Start option when starting Ignition, a samplequickstart project will have been created and you will need to open that project. 
 
 5. Under the Tag Browser section on the left hand side, find the drop down menu and select **default**.
 6. Expand the Edge Nodes folder tree until you have exposed the **PLC 1** folder with the **Example Tag**.
 7. Complete steps 1 - 6 in this section on both machines.
+
+![Final step DL](../../static/img/finalstepdesigner.png)
 
 ### Test Your Connection
 1. On your Secondary machine, where you see the Value as 1, change it to 2.
