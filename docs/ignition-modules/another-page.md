@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Advanced: MQTT Modules in Redundant Ignition Environment
+# MQTT IIot Recipe
 
 Documents are **groups of pages** connected through:
 

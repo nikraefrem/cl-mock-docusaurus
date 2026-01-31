@@ -41,7 +41,7 @@ Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Versi
 
 ## Configure the Secondary Machine
 1. Repeat steps 1 through 3 from configuring the primary machine, on the secondary machine.
-- Note: You will use the previously created username & password credentials here, so have them readily available.
+> *Note: You will use the previously created username & password credentials here, so have them readily available.*
 2. Download the **MQTT Transmission Module** under ‘Cirrus Link Solutions MQTT Modules for Ignition’.
 
 ## Configure the Ignition Gateway on Both Machines
@@ -54,7 +54,7 @@ Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Versi
 2. When prompted, select the MQTT Distributor module from the file browser and select Install. Accept the license agreement and certification and install the module. Repeat for the MQTT Engine module.
 3. When complete, the Ignition Gateway will show the current state of the installed modules (pictured above).
 
-> By default, MQTT Engine is already configured to point to an MQTT Server at tcp://localhost:1883, which means it will automatically connect to the MQTT Distributor installed with it. No additional configuration is required.
+- By default, MQTT Engine is already configured to point to an MQTT Server at tcp://localhost:1883, which means it will automatically connect to the MQTT Distributor installed with it. No additional configuration is required.
 
 4. To verify the connection status, navigate to the **Config** tab → **MQTT ENGINE** → **Settings** → **Servers** tab. Confirm that the Chariot SCADA Status shows ‘Connected’.
 
@@ -80,7 +80,7 @@ Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Versi
 > Validation check: ie. how is the user doing at this point? How can we provide answers for pain points in advance?
 
 ## Launch Designer on both Machines
-### At this point, you are ready to edit the default tag created during the MQTT Transmission installation so that data can be published and observed. 
+#### At this point, you are ready to edit the default tag created during the MQTT Transmission installation so that data can be published and observed. 
 
 1. From the Ignition Gateway web interface, select **Get Designer** and follow the instructions to download, install, and launch **Designer Launcher.**
 
