@@ -2,46 +2,18 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Chariot MQTT Server
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**Chariot MQTT Server Documentation**
+Chariot® MQTT Server is a MQTT 3.1.1 compliant MQTT server.  It is capable of providing a functional replacement for MQTT Distributor in larger scale deployments.  It can be installed as a virtual machine on a private network or in the cloud via Amazon AWS EC2.  It comes with a two hour renewable trial period.  It can also be set up with a license key from Cirrus Link to enable it permanently.  Chariot MQTT Server provides a web based administration page for enabling and limiting user access to the MQTT server via an Access Control List (ACLs).  It supports TLS security and username/password authentication in addition to ACLs for client authorization.
 
-## Getting Started
+More information including installation instructions can be found in the links below.
 
-Get started by **creating a new site**.
+- Chariot MQTT Server Installation
+- Step by step instructions to install the Chariot MQTT Server
+- Chariot MQTT Server Configuration
+- Configuration guide for the Chariot MQTT Server
+- FAQ: Chariot MQTT Server
+- Frequently asked questions about Chariot MQTT Server
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+New to MQTT? Start Here!
