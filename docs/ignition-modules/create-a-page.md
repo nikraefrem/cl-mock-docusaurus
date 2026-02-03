@@ -6,15 +6,17 @@ sidebar_position: 1
 **This tutorial provides step-by-step instructions for installing and configuring a two-gateway Ignition architecture using MQTT.**
 
 ## Index
-**Ignition**: an Industrial Application Platform that can be used to create SCADA and HMI solutions. A fully functional Ignition system can be downloaded and run in a trial mode running for two hours at a time with unlimited restarts. Using Ignition as a tool in this way allows us to install the Sparkplug MQTT Modules and observe everything working.
+**Ignition**: An industrial application platform used to build SCADA and HMI solutions. Ignition can be downloaded and run in trial mode (two hours at a time with unlimited restarts), which allows users to install Cirrus Link MQTT modules and validate system behavior during setup.
 
-**Ignition Edge**: a leaner version of Ignition made specifically for use in on edge-of-network devices. Ignition comes with unlimited Tags, Clients, and database connections, while Ignition Edge comes with unlimited Tags, two Clients (one local and one remote) and no database connectivity.
+**Ignition Edge**: A lightweight version of Ignition designed for edge-of-network devices. Ignition Edge supports unlimited tags, two clients (one local and one remote), and does not include database connectivity.
 
-**MQTT Distributor**: An MQTT Server that runs as an Ignition module.
+**MQTT Distributor**: An MQTT server that runs as an Ignition module and acts as the central message broker for MQTT communications in the system.
 
-**MQTT Engine**: An MQTT Client that implements the Sparkplug specification and automatically creates Ignition tag structures for Edge Node and Device metadata and process variables.
+**MQTT Engine**: An MQTT client module that implements the Sparkplug specification and automatically creates Ignition tag structures for edge nodes, devices, and process variables based on incoming MQTT data.
 
-**MQTT Transmission**: An MQTT Client that implements the Sparkplug specification to bridge local Ignition tags (OPC-UA and Memory tags) and publish the resulting structure to an MQTT infrastructure.
+**MQTT Transmission**: An MQTT client module that implements the Sparkplug specification to publish local Ignition tags (OPC-UA and memory tags) to an MQTT infrastructure.
+
+In this tutorial, MQTT Transmission publishes data from the secondary machine, MQTT Distributor brokers the data, and MQTT Engine consumes and exposes it on the primary machine. See the diagram below for a high level overview.
 
 ![Architecture](../../static/img/two-ignition-architecture.png)
 
@@ -36,14 +38,15 @@ Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Versi
 ![Ignition Version Archive tab](../../static/img/versionarchive-check.png)
 
 2. Follow Inductive Automation’s guide to [install and start Ignition](https://www.docs.inductiveautomation.com/docs/8.1/getting-started/installing-and-upgrading).
-> *Note: You will use the username & password credentials again in the next steps, so keep them readily available.*
+> *Note: You will use these credentials again in the next steps, so keep them readily available.*
 3. Once Ignition is successfully downloaded and started, go to the Strategic Partner Modules tab on the [Ignition Downloads page](https://inductiveautomation.com/downloads/third-party-modules/8.3.3). Again, use the drop-down menu to find the appropriate **8.1.xx** version(s).
 4. Download the **MQTT Distributor Module** and **MQTT Engine Module** under 'Cirrus Link Solutions MQTT Modules for Ignition'.
-> On your primary machine, remember to either turn off firewalls or, at a minimum, allow inbound connections to TCP/IP port #1883 and port #8883, as remote MQTT Clients will need to be able to establish a TCP/IP socket connection to these ports. --> *[how do I do this?](www.google.com)* 
+
+> ***Note:*** *Ensure that ports 1883 and 8883 are accessible on the primary machine. Refer to your operating system’s firewall documentation for instructions on allowing inbound TCP connections.*
 
 ## Configure the Secondary Machine
 1. Repeat steps 1 through 3 from configuring the primary machine, on the secondary machine.
-> *Note: You will use the previously created username & password credentials here, so have them readily available.*
+> *Note: You will use the previously created credentials here, so have them readily available.*
 2. Download the **MQTT Transmission Module** under ‘Cirrus Link Solutions MQTT Modules for Ignition’.
 
 ## Configure the Ignition Gateway on Both Machines
@@ -78,7 +81,7 @@ When complete, the Ignition Gateway will show the current state of the installed
 
 4. Edit the MQTT Server named Chariot SCADA to modify the URL to point to the Primary machine’s Ignition Gateway IP Address.
 
-> *[(?) How can I find the IP Address on my machine?](www.google.com)*
+> ***Note:*** *To find the IP address of the primary machine, use the network settings for your operating system or run `ipconfig` (Windows) or `ifconfig` (Linux/macOS).*
 
 - Example: If your IP Address is 10.1.10.97 on your Primary machine, then set the URL to **tcp://10.1.10.97:1883** and **Save Changes**.
 
@@ -90,7 +93,7 @@ When complete, the Ignition Gateway will show the current state of the installed
 
 ## Launch Designer on Both Machines
 #### At this point, you are ready to edit the default tag created during the MQTT Transmission installation so that data can be published and observed. 
-
+You will complete the following steps 1-6 on both machines:
 1. From the Ignition Gateway web interface, select **Get Designer** and follow the instructions to download, install, and launch **Designer Launcher.**
 
 2. Once Ignition Designer Launcher has launched, navigate to **Settings** in the top right hand corner. 
@@ -101,9 +104,8 @@ When complete, the Ignition Gateway will show the current state of the installed
 
 > Note: if you enabled the Quick Start option when starting Ignition, a samplequickstart project will have been created and you will need to open that project. 
 
-5. Under the Tag Browser section on the left hand side, find the drop down menu and select **default**.
+5. In the Tag Browser section on the left, select **default** from the drop-down menu.
 6. Expand the Edge Nodes folder tree until you have exposed the **PLC 1** folder with the **Example Tag**.
-7. Complete steps 1 - 6 in this section on both machines.
 
 ![Final step DL](../../static/img/finalstepdesigner.png)
 
@@ -116,9 +118,10 @@ When complete, the Ignition Gateway will show the current state of the installed
 At this point you have a fully functional system that can be expanded or modified as required.  Below are some additional activities you may want to try on your own.
 
 ## Extra Activities
-Allow outbound tag writes. Video 9: Allow Outbound Tag Writes
-Disable MQTT Transmission to see the tags go stale in MQTT Engine
-Set the 'Primary Host ID'.  This is a setting that is highly recommended and should be set on both MQTT Engine and any MQTT Transmission instances that are reporting in as well. Video 10: Primary Host ID Setting
-Modify the tags folder to add additional memory tags Creating Tags in Ignition and force an update to the Ignition Gateway Using the MQTT Transmission Refresh Mechanism
-TLS enable the MQTT Distributor module and disable port 1883. Video 11: How to Set Up Transport Layer Security 
-Set up Store-and-Forward in MQTT Transmission to show data being saved when the connection goes down. Video 12: Set Up Store-and-Forward System
+- Allow outbound tag writes. 
+- Video 9: Allow Outbound Tag Writes. Disable MQTT Transmission to see the tags go stale in MQTT Engine. Set the 'Primary Host ID'. This is a setting that is highly recommended and should be set on both MQTT Engine and any MQTT Transmission instances that are reporting in as well. 
+- Video 10: Primary Host ID Setting Modify the tags folder to add additional memory tags Creating Tags in Ignition and force an update to the Ignition Gateway Using the MQTT Transmission Refresh Mechanism
+TLS enable the MQTT Distributor module and disable port 1883. 
+- Video 11: How to Set Up Transport Layer Security 
+Set up Store-and-Forward in MQTT Transmission to show data being saved when the connection goes down. 
+- Video 12: Set Up Store-and-Forward System
