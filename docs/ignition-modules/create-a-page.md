@@ -5,7 +5,7 @@ sidebar_position: 1
 # Getting Started: Two Ignition Architecture
 **This tutorial provides step-by-step instructions for installing and configuring a two-gateway Ignition architecture using MQTT.**
 
-## Index
+## Key Components
 **Ignition**: An industrial application platform used to build SCADA and HMI solutions. Ignition can be downloaded and run in trial mode (two hours at a time with unlimited restarts), which allows users to install Cirrus Link MQTT modules and validate system behavior during setup.
 
 **Ignition Edge**: A lightweight version of Ignition designed for edge-of-network devices. Ignition Edge supports unlimited tags, two clients (one local and one remote), and does not include database connectivity.
@@ -21,7 +21,7 @@ In this tutorial, MQTT Transmission publishes data from the secondary machine, M
 ![Architecture](../../static/img/two-ignition-architecture.png)
 
 ## Prerequisites
-- Two machines to run the two instances of **Ignition**, or **Ignition + Ignition Edge**
+- Two machines to run two Ignition instances (**Ignition + Ignition Edge** or **Ignition + Ignition**)
 - **Ignition** can run on a laptop, in the cloud via an AWS EC2 instance, or some other development computer.
 - **Ignition Edge** can run on one of many supported embedded edge of network gateways, a laptop or development computer, a Raspberry Pi (load ARMHF version), or also in a cloud service.
 
