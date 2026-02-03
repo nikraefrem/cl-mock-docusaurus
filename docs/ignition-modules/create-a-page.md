@@ -46,7 +46,7 @@ Find the latest compatible Cirrus Link Solutions MQTT Modules for Ignition Versi
 
 ## Configure the Secondary Machine
 1. Repeat steps 1 through 3 from configuring the primary machine, on the secondary machine.
-> *Note: You will use the previously created credentials here, so have them readily available.*
+> ***Note:*** *You will use the previously created credentials here, so have them readily available.*
 2. Download the **MQTT Transmission Module** under ‘Cirrus Link Solutions MQTT Modules for Ignition’.
 
 ## Configure the Ignition Gateway on Both Machines
